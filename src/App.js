@@ -1,25 +1,71 @@
-import logo from './logo.svg';
 import './App.css';
+import ScrollButton from './components/ScrollButton';
+import { Component } from 'react';
+import DisplayContainer from './components/DisplayContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      currentIndex:0,
+     
+    }
+    this.handleChangeIndex=this.handleChangeIndex.bind(this)
+    this.handleLen=this.handleLen.bind(this)
+  }
+
+
+handleChangeIndex(newIndex){
+  this.setState({
+    currentIndex:newIndex,
+    len:null
+  })
+  }
+  handleLen(val){
+    this.setState({len:val})
+  }
+  render(){
+      
+
+     return (
+       <div className="App2">
+
+        <div className="App1">
+          
+            
+              <ScrollButton
+              carrot="<Previous"
+              handleChangeIndex={this.handleChangeIndex}
+              currentIndex={this.state.currentIndex}
+              direction={-1}
+              />
+              
+            <div>
+                  <DisplayContainer currentIndex={this.state.currentIndex}
+                                  handleLen={this.handleLen}/>
+
+                  </div>
+
+            
+              <ScrollButton 
+              carrot=">Next"
+              handleChangeIndex={this.handleChangeIndex}
+              currentIndex={this.state.currentIndex}
+              direction={+1}
+              />
+              
+            </div>
+            
+              
+       </div>
+    
+   
   );
+
+
+  }
+  
 }
 
 export default App;
