@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state={
       currentIndex:0,
-     
+     len:25
     }
     this.handleChangeIndex=this.handleChangeIndex.bind(this)
     this.handleLen=this.handleLen.bind(this)
@@ -19,16 +19,18 @@ class App extends Component {
 handleChangeIndex(newIndex){
   this.setState({
     currentIndex:newIndex,
-    len:null
+    
   })
   }
+
+
   handleLen(val){
     this.setState({len:val})
   }
   render(){
-      
+    return  this.state.currentIndex===-1 || this.state.currentIndex===25?alert('TODO....'):
 
-     return (
+      (
        <div className="App2">
 
         <div className="App1">
@@ -39,6 +41,7 @@ handleChangeIndex(newIndex){
               handleChangeIndex={this.handleChangeIndex}
               currentIndex={this.state.currentIndex}
               direction={-1}
+              len={this.state.len}
               />
               
             <div>
@@ -53,6 +56,7 @@ handleChangeIndex(newIndex){
               handleChangeIndex={this.handleChangeIndex}
               currentIndex={this.state.currentIndex}
               direction={+1}
+              len={this.state.len}
               />
               
             </div>

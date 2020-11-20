@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 
 export default class DisplayData extends Component {
    
-    componentDidUpdate(prev){
-       if(this.props.list.length !== prev.list.length){
-        console.log('fafa')
-        this.props.handleLen(this.props.list.length)}
-    }
+    
     render(){        
         const mapped = this.props.favoriteMovies.map(movies=>{
             return(

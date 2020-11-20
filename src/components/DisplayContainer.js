@@ -19,13 +19,10 @@ export default class DisplayContainer extends Component {
         const list=[...this.state.list]
         list.splice(index,1)
         this.setState({list})
+        this.props.handleLen(this.state.list.length)
         }
 
-        componentDidUpdate(x,prev){
-            if (this.state.list.length == prev.list.length)
-            console.log('fafa')
-            this.props.handleLen(this.state.list.length)
-        }
+        
 
     render(){
         const mapped = this.state.list.map((item,index)=>{
